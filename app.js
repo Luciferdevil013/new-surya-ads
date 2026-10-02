@@ -119,8 +119,7 @@
     if (fallbackTimer) clearTimeout(fallbackTimer);
     fallbackTimer = setTimeout(showFallback, 3500);
 
-    // A real click already navigates natively — don't fight it, that is the
-    // most reliable path inside the Facebook / Instagram in-app browsers.
+    // Desktop clicks open a new tab natively — nothing more to do.
     if (viaClick) return;
 
     setTimeout(function () {
@@ -193,7 +192,12 @@
 
       cta.addEventListener('click', function (e) {
         if (!waLink) { e.preventDefault(); return; }
-        goToWhatsApp(true);
+        // Desktop opens a new tab, so this page stays alive and the pixel
+        // beacon gets out. On mobile WhatsApp replaces this page — hold the
+        // navigation for trackingFlushMs so the Subscribe event is delivered.
+        if (isDesktop()) { goToWhatsApp(true); return; }
+        e.preventDefault();
+        goToWhatsApp(false);
       });
     });
 
