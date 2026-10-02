@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surya Sports Media — Chat on WhatsApp</title>
+<meta name="description" content="Message Surya Sports Media on WhatsApp for a free consultation. No forms, no waiting.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d0a12">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Open Graph / social preview (values are refreshed from config.js at runtime) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Surya Sports Media">
+<meta property="og:title" content="Surya Sports Media — Chat on WhatsApp">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:description" content="Message Surya Sports Media on WhatsApp for a free consultation. No forms, no waiting.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="assets/surya-mark.svg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sun:        #FF6B1A;
+    --sun-deep:   #E04E00;
+    --gold:       #FFC23D;
+    --green:      #25D366;
+    --green-deep: #128C4E;
+    --bg:         #0d0a12;
+    --bg-2:       #16121d;
+    --card:       #1c1725;
+    --line:       #2c2537;
+    --text:       #F6F2EE;
+    --text-soft:  #B9B0C2;
+    --text-faint: #7d7488;
+  }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: clip;
+  }
+
+  [hidden] { display: none !important; }
+
+  a { color: var(--sun); }
+
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  .display {
+    font-family: 'Anton', 'Archivo', Impact, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+  }
+
+  /* ---------- header ---------- */
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding-top: 22px; padding-bottom: 22px;
+  }
+
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+
+  .brand-mark {
+    width: 40px; height: 40px; flex: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--sun), var(--sun-deep));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 18px;
+    overflow: hidden;
+  }
+  .brand-mark.has-logo { background: none; }
+  .brand-mark img { width: 100%; height: 100%; display: block; }
+
+  .brand-name {
+    font-weight: 800; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .status-pill {
+    flex: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--text);
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    padding: 7px 12px;
+    border-radius: 999px;
+  }
+
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(37,211,102,.6);
+    animation: live 1.8s infinite;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    position: relative;
+    padding: 40px 0 64px;
+    isolation: isolate;
+  }
+
+  /* stadium-light glow + pitch lines */
+  .hero::before {
+    content: "";
+    position: absolute; inset: -120px 0 0 0; z-index: -1;
+    background:
+      radial-gradient(600px 380px at 85% 10%, rgba(255,107,26,.28), transparent 70%),
+      radial-gradient(500px 300px at 5% 90%, rgba(255,194,61,.10), transparent 70%),
+      repeating-linear-gradient(115deg, transparent 0 46px, rgba(255,255,255,.025) 46px 47px);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-copy { animation: floatUp .5s ease both; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .badge::before { content: ""; width: 26px; height: 2px; background: var(--gold); }
+
+  h1 {
+    font-size: clamp(48px, 8.5vw, 92px);
+    margin-bottom: 22px;
+  }
+  h1 .hl { color: var(--sun); }
+
+  .sub {
+    font-size: 18px; line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 500px;
+    margin-bottom: 32px;
+    text-wrap: pretty;
+  }
+
+  /* ---------- CTA ---------- */
+
+  .cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    background: var(--green);
+    color: #062b16;
+    font-family: inherit;
+    font-size: 18px; font-weight: 800;
+    padding: 19px 30px;
+    border-radius: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 14px 34px rgba(37,211,102,.25);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .cta svg path { fill: #062b16; }
+  .cta:hover  { color: #062b16; background: #3ee07a; transform: translateY(-2px); box-shadow: 0 18px 40px rgba(37,211,102,.35); }
+  .cta:active { transform: translateY(0) scale(.99); }
+  .cta:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .cta svg { flex: none; }
+
+  .note {
+    font-size: 13px; color: var(--text-faint);
+    margin-top: 14px; min-height: 20px;
+  }
+  .note.is-active { color: var(--green); font-weight: 700; }
+
+  .fallback {
+    font-size: 13px; font-weight: 600; color: var(--text-soft);
+    margin-top: 8px; display: none;
+  }
+  .fallback.is-visible { display: block; animation: floatUp .35s ease both; }
+
+  /* ---------- scoreboard (trust row) ---------- */
+
+  .scoreboard {
+    background: linear-gradient(180deg, var(--card), var(--bg-2));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 30px 60px rgba(0,0,0,.45);
+    transform: rotate(1.5deg);
+    animation: floatUp .6s .1s ease both;
+  }
+
+  .scoreboard-head {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-faint);
+    padding-bottom: 14px; margin-bottom: 6px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .scoreboard-head .live { color: var(--sun); display: inline-flex; align-items: center; gap: 6px; }
+  .scoreboard-head .live::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sun);
+    animation: blink 1.2s steps(2) infinite;
+  }
+
+  .trust > div {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .trust > div:last-child { border-bottom: 0; padding-bottom: 2px; }
+
+  .stat-value {
+    order: 2;
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: 34px; line-height: 1;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    order: 1;
+    font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  /* ---------- ticker ---------- */
+
+  .ticker-wrap { overflow: hidden; padding: 24px 0; }
+
+  .ticker {
+    background: var(--sun);
+    color: #1a0b00;
+    transform: rotate(-1.6deg);
+    margin: 0 -40px;
+    overflow: hidden;
+    border-top: 3px solid var(--bg);
+    border-bottom: 3px solid var(--bg);
+  }
+  .ticker-track {
+    display: flex; width: max-content;
+    animation: ticker 26s linear infinite;
+  }
+  .ticker span {
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: 22px; text-transform: uppercase; letter-spacing: .04em;
+    padding: 12px 22px;
+    white-space: nowrap;
+  }
+  .ticker span::after { content: "✦"; margin-left: 44px; font-size: 16px; vertical-align: 3px; }
+
+  /* ---------- sections ---------- */
+
+  .section { padding: 64px 0 0; }
+
+  .eyebrow {
+    font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--sun);
+    margin-bottom: 10px;
+  }
+
+  .section h2 { font-size: clamp(36px, 5.5vw, 56px); margin-bottom: 36px; max-width: 700px; }
+
+  .cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+
+  .card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px 24px 28px;
+    overflow: hidden;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .card:hover { border-color: var(--sun); transform: translateY(-3px); }
+
+  .card-num {
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: 64px; line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--line);
+    position: absolute; right: 18px; top: 14px;
+  }
+
+  .card-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: rgba(255,107,26,.12);
+    color: var(--sun);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+  }
+
+  .card h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
+  .card p  { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+
+  /* steps */
+
+  .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    counter-reset: step;
+    border-top: 2px solid var(--line);
+  }
+  .step { padding: 24px 24px 0 0; position: relative; }
+  .step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    display: block;
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: 40px; color: var(--sun); line-height: 1;
+    margin-bottom: 14px;
+  }
+  .step::after {
+    content: ""; position: absolute; top: -7px; left: 0;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--sun); box-shadow: 0 0 0 4px var(--bg);
+  }
+  .step h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .step p  { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+
+  /* final CTA band */
+
+  .final {
+    margin-top: 96px;
+    background:
+      repeating-linear-gradient(115deg, transparent 0 22px, rgba(0,0,0,.06) 22px 24px),
+      linear-gradient(135deg, var(--sun), var(--sun-deep));
+    border-radius: 24px;
+    padding: 48px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 28px;
+    flex-wrap: wrap;
+    color: #1a0b00;
+  }
+  .final h2 { font-size: clamp(34px, 5vw, 52px); margin: 0; max-width: 560px; }
+  .final .cta { background: #0d0a12; color: #fff; box-shadow: 0 14px 30px rgba(0,0,0,.3); }
+  .final .cta svg path { fill: var(--green); }
+  .final .cta:hover { background: #1f1828; color: #fff; }
+
+  /* ---------- footer ---------- */
+
+  .footer {
+    padding: 36px 0 calc(36px + env(safe-area-inset-bottom));
+    margin-top: 40px;
+    font-size: 13px; color: var(--text-faint);
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+  }
+  .footer a { color: var(--text-soft); text-decoration: none; }
+  .footer a:hover { color: var(--sun); text-decoration: underline; }
+  .footer .sep { opacity: .5; margin: 0 8px; }
+
+  /* ---------- motion ---------- */
+
+  @keyframes live {
+    0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .scoreboard { transform: none; }
+    .cards, .steps { grid-template-columns: 1fr; }
+    .steps { border-top: 0; border-left: 2px solid var(--line); padding-left: 22px; }
+    .step { padding: 0 0 28px; }
+    .step::after { top: 6px; left: -29px; }
+    .final { padding: 36px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding-top: 20px; }
+    .sub { font-size: 16px; }
+    .cta { width: 100%; font-size: 17px; padding: 18px 20px; }
+    .status-pill .pill-text { display: none; }
+    .section { padding-top: 64px; }
+  }
+</style>
+
+<script src="config.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1594994882106538');
+fbq('track', 'PageView');
+
+// Subscribe — fired when the visitor taps a WhatsApp button (once per visit)
+var subscribeTracked = false;
+document.addEventListener('click', function (e) {
+  if (!subscribeTracked && e.target.closest && e.target.closest('[data-wa-cta]')) {
+    subscribeTracked = true;
+    fbq('track', 'Subscribe');
+  }
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+
+<body>
+
+<header class="wrap topbar">
+  <div class="brand">
+    <div class="brand-mark" id="brandMark" aria-hidden="true">S</div>
+    <span class="brand-name" id="brandName">Surya Sports Media</span>
+  </div>
+  <span class="status-pill"><span class="live-dot" aria-hidden="true"></span><span class="pill-text" id="onlineLabel">Online now</span></span>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+
+      <div class="hero-copy">
+        <div class="badge" id="badge">Replies in minutes</div>
+
+        <h1 class="display" id="headline">Get more customers from your ads</h1>
+
+        <p class="sub" id="subheadline">
+          Tap the button below to chat with us directly. No forms, no waiting — just a quick message and we'll take it from there.
+        </p>
+
+        <a class="cta" id="cta" data-wa-cta href="#" rel="noopener nofollow" aria-label="Chat with us on WhatsApp">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span id="buttonLabel">Chat with us on WhatsApp</span>
+        </a>
+
+        <p class="note" id="note" role="status" aria-live="polite">Free consultation · No spam, ever</p>
+        <p class="fallback" id="fallback">Didn't open automatically? Tap the button above.</p>
+      </div>
+
+      <aside class="scoreboard" aria-label="Why teams choose us">
+        <div class="scoreboard-head"><span>Surya Scoreboard</span><span class="live">Live</span></div>
+        <div class="trust" id="trust" hidden></div>
+      </aside>
+
+    </div>
+  </section>
+
+  <div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="ticker-track"><span>Sports ads</span><span>Match promos</span><span>Instagram &amp; Facebook</span><span>Event launches</span><span>Leads on WhatsApp</span><span>AI-powered creatives</span><span>Sports ads</span><span>Match promos</span><span>Instagram &amp; Facebook</span><span>Event launches</span><span>Leads on WhatsApp</span><span>AI-powered creatives</span></div></div></div>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What we do</p>
+      <h2 class="display">Ads built for the game day crowd</h2>
+
+      <div class="cards">
+        <article class="card">
+          <span class="card-num" aria-hidden="true">01</span>
+          <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div>
+          <h3>Targeted ad campaigns</h3>
+          <p>Facebook and Instagram ads aimed at the people most likely to buy, book or turn up.</p>
+        </article>
+        <article class="card">
+          <span class="card-num" aria-hidden="true">02</span>
+          <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg></div>
+          <h3>Scroll-stopping creatives</h3>
+          <p>AI-powered videos, posters and reels that make your team, event or brand impossible to miss.</p>
+        </article>
+        <article class="card">
+          <span class="card-num" aria-hidden="true">03</span>
+          <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 3v6h-6"/></svg></div>
+          <h3>Leads straight to WhatsApp</h3>
+          <p>Every interested customer lands in your WhatsApp chat — ready to talk, not lost in a form.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="display">Three plays to kick off</h2>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Message us</h3>
+          <p>Tap the WhatsApp button and tell us about your business or event.</p>
+        </div>
+        <div class="step">
+          <h3>Get your game plan</h3>
+          <p>We suggest the audience, creatives and budget that fit your goals.</p>
+        </div>
+        <div class="step">
+          <h3>Go live</h3>
+          <p>Your ads launch and new enquiries start arriving on WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="final">
+        <h2 class="display">Ready to fill the stands?</h2>
+        <a class="cta" data-wa-cta href="#" rel="noopener nofollow" aria-label="Chat with us on WhatsApp">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span>Start on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <span><span id="footerBrand">Surya Sports Media</span> · <span id="footerNote">Chat with us on WhatsApp</span></span>
+  <span>
+    <a id="privacyLink" href="privacy.html">Privacy Policy</a><span class="sep">·</span><a id="termsLink" href="terms.html">Terms</a>
+  </span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

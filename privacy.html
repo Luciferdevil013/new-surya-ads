@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy</title>
+<meta name="description" content="How we collect, use and protect your information.">
+<link rel="icon" type="image/svg+xml" href="assets/surya-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legal.css">
+<script src="config.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">&larr; Back</a>
+
+  <div class="card">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: <span id="updated">—</span></p>
+
+    <p>This policy explains how <strong class="brand">Your Business</strong> ("we", "us") handles
+    information when you visit this page or contact us through WhatsApp.</p>
+
+    <h2>Information we collect</h2>
+    <ul>
+      <li><strong>Information you send us.</strong> When you tap the WhatsApp button and message us,
+      we receive your WhatsApp phone number, your profile name, and the contents of your messages.</li>
+      <li><strong>Usage data.</strong> Standard technical information such as your browser type,
+      device type, approximate region, referring page, and the campaign parameters in the link you
+      arrived from.</li>
+      <li><strong>Advertising cookies.</strong> If advertising measurement is enabled, the Meta Pixel
+      may set cookies to measure the performance of our ads. See "Advertising and analytics" below.</li>
+    </ul>
+
+    <h2>How we use it</h2>
+    <ul>
+      <li>To reply to your enquiry and provide the products or services you asked about.</li>
+      <li>To measure which advertisements bring genuine enquiries.</li>
+      <li>To keep records required for accounting, tax, or legal compliance.</li>
+    </ul>
+
+    <p>We do not sell your personal information.</p>
+
+    <h2>Advertising and analytics</h2>
+    <p>We advertise on Meta platforms (Facebook and Instagram). Where enabled, the Meta Pixel records
+    that a visit or an enquiry occurred so we can measure ad performance and reach similar audiences.
+    Meta processes this data under its own
+    <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Privacy Policy</a>.
+    You can manage your ad preferences in your Meta account settings.</p>
+
+    <h2>WhatsApp messages</h2>
+    <p>Conversations take place inside WhatsApp and are subject to WhatsApp's own
+    <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+    We only message you in response to a conversation you started, or where you have agreed to receive
+    messages from us. You can stop receiving messages at any time by replying <strong>STOP</strong>
+    or by blocking our number.</p>
+
+    <h2>Retention</h2>
+    <p>We keep enquiry records only as long as needed to serve you and to meet legal obligations,
+    after which they are deleted.</p>
+
+    <h2>Your rights</h2>
+    <p>You may ask us to access, correct, or delete the personal information we hold about you, or to
+    stop contacting you. Write to us at the address below and we will respond within a reasonable time.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy? Email <a id="contactEmail" href="#">—</a>.</p>
+
+    <div class="note">
+      <strong>Template notice — remove before going live.</strong> Fill in your legal entity name,
+      contact email, and address in <code>config.js</code>, and have this reviewed against the privacy
+      law that applies to you (GDPR, DPDP Act, CCPA, etc.). This text is a starting point, not legal advice.
+    </div>
+  </div>
+
+  <p class="foot">&copy; <span id="year"></span> <span class="brand">Your Business</span></p>
+
+</div>
+
+<script>
+(function () {
+  var C = window.LP_CONFIG || {};
+  var brand = C.brandName || 'Your Business';
+  var email = C.contactEmail || 'hello@example.com';
+
+  Array.prototype.forEach.call(document.querySelectorAll('.brand'), function (n) {
+    n.textContent = brand;
+  });
+
+  var mail = document.getElementById('contactEmail');
+  mail.textContent = email;
+  mail.setAttribute('href', 'mailto:' + email);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('updated').textContent =
+    C.legalUpdated || new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+})();
+</script>
+</body>
+</html>
