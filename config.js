@@ -47,7 +47,8 @@ window.LP_CONFIG = {
   // Google Analytics 4 measurement ID (e.g. "G-XXXXXXX") — leave "" to disable.
   ga4Id: "",
 
-  // Grace period (ms) given to the pixel to send its beacon before navigating.
+  // Grace period (ms) given to the pixel before an automatic redirect.
+  // Button taps always navigate immediately (see app.js).
   trackingFlushMs: 300,
 
   /* ============ URL OVERRIDES ============ */
