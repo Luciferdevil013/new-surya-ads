@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#0d0a12">
 <meta name="format-detection" content="telephone=no">
 
-<!-- Open Graph / social preview (values are refreshed from config.js at runtime) -->
+<!-- Open Graph / social preview -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Surya Sports Media">
 <meta property="og:title" content="Surya Sports Media — Chat on WhatsApp">
@@ -22,11 +22,28 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Fonts are served from this site (not Google Fonts) so nothing on another
+     domain holds up the first paint on slow mobile connections. -->
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://connect.facebook.net">
 
 <style>
+  @font-face {
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/fonts/anton-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url(assets/fonts/archivo-latin.woff2) format('woff2');
+  }
+
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
@@ -80,13 +97,8 @@
   .brand-mark {
     width: 40px; height: 40px; flex: none;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--sun), var(--sun-deep));
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 800; font-size: 18px;
-    overflow: hidden;
+    display: block;
   }
-  .brand-mark.has-logo { background: none; }
-  .brand-mark img { width: 100%; height: 100%; display: block; }
 
   .brand-name {
     font-weight: 800; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase;
@@ -135,8 +147,6 @@
     gap: 48px;
     align-items: center;
   }
-
-  .hero-copy { animation: floatUp .5s ease both; }
 
   .badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -187,12 +197,6 @@
   }
   .note.is-active { color: var(--green); font-weight: 700; }
 
-  .fallback {
-    font-size: 13px; font-weight: 600; color: var(--text-soft);
-    margin-top: 8px; display: none;
-  }
-  .fallback.is-visible { display: block; animation: floatUp .35s ease both; }
-
   /* ---------- scoreboard (trust row) ---------- */
 
   .scoreboard {
@@ -202,7 +206,6 @@
     padding: 22px;
     box-shadow: 0 30px 60px rgba(0,0,0,.45);
     transform: rotate(1.5deg);
-    animation: floatUp .6s .1s ease both;
   }
 
   .scoreboard-head {
@@ -360,9 +363,6 @@
     display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     border-top: 1px solid var(--line);
   }
-  .footer a { color: var(--text-soft); text-decoration: none; }
-  .footer a:hover { color: var(--sun); text-decoration: underline; }
-  .footer .sep { opacity: .5; margin: 0 8px; }
 
   /* ---------- motion ---------- */
 
@@ -373,10 +373,6 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   @keyframes ticker { to { transform: translateX(-50%); } }
-  @keyframes floatUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; }
-  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -407,7 +403,6 @@
   }
 </style>
 
-<script src="config.js"></script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -420,15 +415,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1594994882106538');
 fbq('track', 'PageView');
-
-// Subscribe — fired when the visitor taps a WhatsApp button (once per visit)
-var subscribeTracked = false;
-document.addEventListener('click', function (e) {
-  if (!subscribeTracked && e.target.closest && e.target.closest('[data-wa-cta]')) {
-    subscribeTracked = true;
-    fbq('track', 'Subscribe');
-  }
-});
+// Subscribe is fired when a WhatsApp button is tapped (script at the bottom)
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
@@ -440,10 +427,10 @@ src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
 
 <header class="wrap topbar">
   <div class="brand">
-    <div class="brand-mark" id="brandMark" aria-hidden="true">S</div>
-    <span class="brand-name" id="brandName">Surya Sports Media</span>
+    <img class="brand-mark" src="assets/surya-mark.svg" alt="" width="40" height="40">
+    <span class="brand-name">Surya Sports Media</span>
   </div>
-  <span class="status-pill"><span class="live-dot" aria-hidden="true"></span><span class="pill-text" id="onlineLabel">Online now</span></span>
+  <span class="status-pill"><span class="live-dot" aria-hidden="true"></span><span class="pill-text">Online now</span></span>
 </header>
 
 <main>
@@ -452,26 +439,29 @@ src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
     <div class="wrap hero-grid">
 
       <div class="hero-copy">
-        <div class="badge" id="badge">Replies in minutes</div>
+        <div class="badge">Replies in minutes</div>
 
-        <h1 class="display" id="headline">Get more customers from your ads</h1>
+        <h1 class="display">Get <span class="hl">more customers</span> from your ads</h1>
 
-        <p class="sub" id="subheadline">
+        <p class="sub">
           Tap the button below to chat with us directly. No forms, no waiting — just a quick message and we'll take it from there.
         </p>
 
-        <a class="cta" id="cta" data-wa-cta href="#" rel="noopener nofollow" aria-label="Chat with us on WhatsApp">
+        <a class="cta" data-wa-cta href="https://wa.me/919423576797?text=Hi%20Surya%20Sports%20Media!%20I%20saw%20your%20ad%20and%20I%27m%20interested.%20Please%20share%20the%20details." rel="nofollow" aria-label="Chat with us on WhatsApp — opens WhatsApp">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          <span id="buttonLabel">Chat with us on WhatsApp</span>
+          <span>Chat with us on WhatsApp</span>
         </a>
 
         <p class="note" id="note" role="status" aria-live="polite">Free consultation · No spam, ever</p>
-        <p class="fallback" id="fallback">Didn't open automatically? Tap the button above.</p>
       </div>
 
       <aside class="scoreboard" aria-label="Why teams choose us">
         <div class="scoreboard-head"><span>Surya Scoreboard</span><span class="live">Live</span></div>
-        <div class="trust" id="trust" hidden></div>
+        <div class="trust">
+          <div><div class="stat-value">AI-powered</div><div class="stat-label">Ads</div></div>
+          <div><div class="stat-value">&lt; 5 min</div><div class="stat-label">Avg. reply</div></div>
+          <div><div class="stat-value">100%</div><div class="stat-label">Client focus</div></div>
+        </div>
       </aside>
 
     </div>
@@ -529,7 +519,7 @@ src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
 
       <div class="final">
         <h2 class="display">Ready to fill the stands?</h2>
-        <a class="cta" data-wa-cta href="#" rel="noopener nofollow" aria-label="Chat with us on WhatsApp">
+        <a class="cta" data-wa-cta href="https://wa.me/919423576797?text=Hi%20Surya%20Sports%20Media!%20I%20saw%20your%20ad%20and%20I%27m%20interested.%20Please%20share%20the%20details." rel="nofollow" aria-label="Start on WhatsApp — opens WhatsApp">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           <span>Start on WhatsApp</span>
         </a>
@@ -540,12 +530,49 @@ src="https://www.facebook.com/tr?id=1594994882106538&ev=PageView&noscript=1"
 </main>
 
 <footer class="wrap footer">
-  <span><span id="footerBrand">Surya Sports Media</span> · <span id="footerNote">Chat with us on WhatsApp</span></span>
-  <span>
-    <a id="privacyLink" href="privacy.html">Privacy Policy</a><span class="sep">·</span><a id="termsLink" href="terms.html">Terms</a>
-  </span>
+  <span>Surya Sports Media · Chat with us on WhatsApp</span>
 </footer>
 
-<script src="app.js"></script>
+<script>
+(function () {
+  // Each WhatsApp button is a plain link, so it works even before this script
+  // runs. Two rules keep the redirect reliable:
+  //  - Never preventDefault and redirect from code: inside the Facebook /
+  //    Instagram in-app browsers that loses the tap's user gesture and
+  //    WhatsApp never opens.
+  //  - No target="_blank": some in-app browsers ignore it, and in Meta's
+  //    Event Setup Tool popup it opens WhatsApp in a tab hidden behind it.
+  // The pixel sends Subscribe with sendBeacon / fetch keepalive, so the event
+  // still arrives when the page navigates away.
+  var note = document.getElementById('note');
+  var noteText = note.textContent;
+  var tracked = false;
+  var resetTimer = null;
+
+  function resetNote() {
+    note.textContent = noteText;
+    note.classList.remove('is-active');
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-wa-cta]'), function (cta) {
+    cta.addEventListener('click', function () {
+      // Once per visit, so repeat taps don't double count
+      if (!tracked && window.fbq) {
+        tracked = true;
+        fbq('track', 'Subscribe', { value: 0, currency: 'INR', predicted_ltv: 0 });
+      }
+      note.textContent = 'Opening WhatsApp…';
+      note.classList.add('is-active');
+      // WhatsApp usually opens as a separate app, so this page can still be showing
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(resetNote, 4000);
+    });
+  });
+
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) resetNote();
+  });
+})();
+</script>
 </body>
 </html>
